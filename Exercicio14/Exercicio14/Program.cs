@@ -24,6 +24,7 @@ namespace Exercicio14
             int o = int.Parse(Console.ReadLine());
 
             Client client = new Client(name, email, birthday);
+            Order order = new Order(DateTime.Now, statusOrder, client);
 
             for(int i = 1; i <= o; i++)
             {
@@ -32,11 +33,19 @@ namespace Exercicio14
                 name = Console.ReadLine();
                 Console.Write("Product price: ");
                 double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+               
+
+                Product product = new Product(name, price);
+
                 Console.Write("Quantity: ");
                 int quantity = int.Parse(Console.ReadLine());
 
-                OrderItem orderItem = new OrderItem(quantity, price, name);
+                OrderItem orderItem = new OrderItem(quantity, price, product);
+
+                order.AddItem(orderItem);
             }
+            Console.WriteLine("\nORDER SUMMARY: ");
+            Console.WriteLine(order);
         }
     }
 }

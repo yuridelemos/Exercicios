@@ -1,4 +1,6 @@
-﻿namespace Exercicio14.Entities
+﻿using System.Globalization;
+
+namespace Exercicio14.Entities
 {
     class OrderItem
     {
@@ -17,6 +19,11 @@
         public double SubTotal()
         {
             return Quantity * Price;
+        }
+
+        public override string ToString()
+        {
+            return ", $" + Price.ToString("F2", CultureInfo.InvariantCulture) + ", Quantity: " + ", Subtotal: $" + SubTotal().ToString("F2", CultureInfo.InvariantCulture); ;
         }
     }
 }
