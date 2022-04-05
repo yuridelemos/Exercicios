@@ -6,14 +6,14 @@ namespace Exercicio14.Entities
     {
         public int Quantity { get; set; }
         public double Price { get; set; }
-        public Product Name { get; set; }
+        public Product Product { get; set; }
 
         public OrderItem() { }
-        public OrderItem(int quantity, double price, Product name)
+        public OrderItem(int quantity, double price, Product product)
         {
             Quantity = quantity;
             Price = price;
-            Name = name;
+            Product = product;
         }
 
         public double SubTotal()
@@ -23,7 +23,7 @@ namespace Exercicio14.Entities
 
         public override string ToString()
         {
-            return ", $" + Price.ToString("F2", CultureInfo.InvariantCulture) + ", Quantity: " + ", Subtotal: $" + SubTotal().ToString("F2", CultureInfo.InvariantCulture); ;
+            return Product.Name + ", $" + Price.ToString("F2", CultureInfo.InvariantCulture) + ", Quantity: " + Quantity + ", Subtotal: $" + SubTotal().ToString("F2", CultureInfo.InvariantCulture); ;
         }
     }
 }
