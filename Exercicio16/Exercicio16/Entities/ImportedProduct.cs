@@ -20,7 +20,7 @@ namespace Exercicio16.Entities
 
         public override string PriceTag()
         {
-            return Name + " $ " + TotalPrice().ToString("F2", CultureInfo.InvariantCulture) + "(Customs fee: $ " + CustomsFee + ")";
+            return Name + " $ " + TotalPrice().ToString("F2", CultureInfo.InvariantCulture) + "(Customs fee: $ " + CustomsFee.ToString("F2", CultureInfo.InvariantCulture) + ")";
         }
 
     }

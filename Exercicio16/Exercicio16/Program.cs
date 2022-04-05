@@ -1,5 +1,7 @@
 ﻿using Exercicio16.Entities;
 using System;
+using System.Globalization;
+
 namespace Exercicio16
 {
     class Program
@@ -11,20 +13,20 @@ namespace Exercicio16
             int count = int.Parse(Console.ReadLine());
             for (int i = 1; i <= count; i++)
             {
-                Console.WriteLine("Product #1 data:");
+                Console.WriteLine($"Product #{i} data:");
                 Console.Write("Common, used or imported (c/u/i)? ");
                 char ProductOrigen = char.Parse(Console.ReadLine());
                 Console.Write("Name: ");
                 string Name = Console.ReadLine();
                 Console.Write("Price: ");
-                double price = double.Parse(Console.ReadLine());
+                double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                 if (ProductOrigen == 'i' || ProductOrigen == 'I')
                 {
                     Console.Write("Customs fee: ");
-                    double customs = double.Parse(Console.ReadLine());
+                    double customs = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                     products.Add(new ImportedProduct(Name, price, customs));
                 }
-                if(ProductOrigen == 'u' || ProductOrigen == 'U')
+                else if (ProductOrigen == 'u' || ProductOrigen == 'U')
                 {
                     Console.Write("Manufacture date (DD/MM/YYYY): ");
                     DateTime date = DateTime.Parse(Console.ReadLine());
@@ -34,14 +36,12 @@ namespace Exercicio16
                 {
                     products.Add(new Product(Name, price));
                 }
-
-                Console.WriteLine();
-                Console.WriteLine("PRICE TAGS:");
-                foreach (Product prod in products)
-                {
-                    Console.WriteLine(prod.PriceTag());
-                }
-
+            }
+            Console.WriteLine();
+            Console.WriteLine("PRICE TAGS:");
+            foreach (Product prod in products)
+            {
+                Console.WriteLine(prod.PriceTag());
             }
 
         }
